@@ -1,5 +1,10 @@
 import React from "react";
+import ProductList from "../data/ProductList";
 
 export const Home = () => {
-  return <div>Home</div>;
+  return (
+    <div>
+      <ProductList />
+    </div>
+  );
 };
