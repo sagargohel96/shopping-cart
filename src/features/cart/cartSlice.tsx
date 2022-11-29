@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 import { ProductInterface } from "../../interface/ProductInferface";
 export interface CartState {
   value: ProductInterface[];
-  total?: number;
+  quanity?: number;
 }
 const initialState: CartState = {
   value: [],
-  total: 0,
+  quanity: 0,
 };
 
 export const cartSlice = createSlice({
@@ -14,8 +14,6 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      console.log("action", action);
-
       let products: ProductInterface[];
       if (state.value.length === 0) {
         products = [action.payload];
@@ -27,9 +25,23 @@ export const cartSlice = createSlice({
         value: products,
       };
     },
+    removeFromCart: (state, action) => {
+      let products: ProductInterface[];
+      if (state.value.length === 0) {
+        return;
+      } else {
+        products = state.value.filter((item, index) => {
+          return item.id !== action.payload;
+        });
+      }
+      return {
+        ...state,
+        value: products,
+      };
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addToCart } = cartSlice.actions;
+export const { addToCart, removeFromCart } = cartSlice.actions;
 export default cartSlice.reducer;

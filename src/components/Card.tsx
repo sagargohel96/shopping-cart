@@ -15,7 +15,6 @@ type CardProps = {
 export const Card = (props: CardProps) => {
   const { imgurl, title, price, rating, product } = props.cardDetails;
   const dispatch = useDispatch();
-
   return (
     <>
       <div className="max-w-sm rounded overflow-hidden shadow-lg max-h-100">
@@ -28,7 +27,9 @@ export const Card = (props: CardProps) => {
           <span className="font-bold"> Rating : {rating}</span>
         </div>
         <button
-          onClick={() => dispatch(addToCart(product))}
+          onClick={() => {
+            dispatch(addToCart(product));
+          }}
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-2 px-4 m-4  rounded-full"
         >
           Add to cart
