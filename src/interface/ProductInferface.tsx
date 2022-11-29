@@ -1,5 +1,6 @@
 export interface ProductInterface {
-  imgurl: any;
+  value: any;
+  imgurl: string;
   id: number;
   title: string;
   price: number;

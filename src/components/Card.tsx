@@ -1,6 +1,9 @@
 import "../style/headings/heading.css";
-
+import { ProductInterface } from "../interface/ProductInferface";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../features/cart/cartSlice";
 type CardObj = {
+  product: ProductInterface;
   imgurl: string;
   title: string;
   price: number;
@@ -10,7 +13,8 @@ type CardProps = {
   cardDetails: CardObj;
 };
 export const Card = (props: CardProps) => {
-  const { imgurl, title, price, rating } = props.cardDetails;
+  const { imgurl, title, price, rating, product } = props.cardDetails;
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -23,7 +27,10 @@ export const Card = (props: CardProps) => {
           <span className="font-bold text-2xl">Price :₹ {price}</span>
           <span className="font-bold"> Rating : {rating}</span>
         </div>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-2 px-4 m-4  rounded-full">
+        <button
+          onClick={() => dispatch(addToCart(product))}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-2 px-4 m-4  rounded-full"
+        >
           Add to cart
         </button>
       </div>

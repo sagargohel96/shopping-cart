@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Card } from "../components/Card";
 
 import { ProductInterface } from "../interface/ProductInferface";
@@ -58,6 +58,7 @@ const ProductList = () => {
                         <Card
                           key={product.id}
                           cardDetails={{
+                            product: product,
                             imgurl: `${product.images[0]} `,
                             title: `${product.title}`,
                             rating: product.rating,
