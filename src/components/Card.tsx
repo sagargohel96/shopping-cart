@@ -14,18 +14,16 @@ export const Card = (props: CardProps) => {
 
   return (
     <>
-      <div className=" flex flex-1 max-w-sm flex-col drop-shadow-lg   border border-solid  border-black p-2 ">
-        <div className="flex max-w-xs max-h-64">
-          <img src={imgurl} alt={title} />
+      <div className="max-w-sm rounded overflow-hidden shadow-lg max-h-100">
+        <img src={imgurl} alt={title} />
+        <div className="px-6 py-4">
+          <div className="font-bold text-xl mb-2">Title : {title}</div>
         </div>
-        <div className="flex p-3  text-ellipsis">
-          <h1> Title : {title} </h1>
+        <div className=" flex justify-around px-6 pt-4 pb-2">
+          <span className="font-bold text-2xl">Price :₹ {price}</span>
+          <span className="font-bold"> Rating : {rating}</span>
         </div>
-        <div className="flex justify-between p-3">
-          <span>Price : {price}</span>
-          <span> Rating : {rating}</span>
-        </div>
-        <button className="border border-blue-500 bg-blue-700 p-1">
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-2 px-4 m-4  rounded-full">
           Add to cart
         </button>
       </div>
