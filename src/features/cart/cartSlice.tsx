@@ -1,5 +1,5 @@
-import { createSlice} from "@reduxjs/toolkit";
-import {CartItemInterface} from"../../interface/CartItemInterface"
+import { createSlice } from '@reduxjs/toolkit';
+import { CartItemInterface } from '../../interface/CartItemInterface';
 export interface CartState {
   value: CartItemInterface[];
   total?: number;
@@ -10,21 +10,18 @@ const initialState: CartState = {
 };
 
 export const cartSlice = createSlice({
-  name: "cart",
+  name: 'cart',
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      const itemIndex = state.value.findIndex((item)=>
-          item.id === action.payload.id
-      )
-      if(itemIndex === -1){
-        const tempItem = {...action.payload , quantity : 1}
-        state.value.push(tempItem)
-          state.total= state.total + action.payload.price
-        
-      }else{
-        state.value[itemIndex].quantity+=1;
-        state.total= state.total + action.payload.price
+      const itemIndex = state.value.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      if (itemIndex === -1) {
+        const tempItem = { ...action.payload, quantity: 1 };
+        state.value.push(tempItem);
+      } else {
+        state.value[itemIndex].quantity += 1;
       }
     },
 
@@ -42,21 +39,24 @@ export const cartSlice = createSlice({
         value: products,
       };
     },
-    incrementQuantity : (state,action)=>{
-     const  itemIndex = state.value.findIndex((item)=>
-          item.id === action.payload
-      )
-      state.value[itemIndex].quantity+=1;
-        state.total= (state.total ?? 0) + state.value[itemIndex].price
+    incrementQuantity: (state, action) => {
+      const itemIndex = state.value.findIndex(
+        (item) => item.id === action.payload
+      );
+      state.value[itemIndex].quantity += 1;
     },
-    decrementQuantity:(state,action)=>{
-      const itemIndex = state.value.findIndex((item)=>
-          item.id === action.payload
-      )
-      state.value[itemIndex].quantity-=1;
-        state.total= (state.total ?? 0) - state.value[itemIndex].price;
-    }
+    decrementQuantity: (state, action) => {
+      const itemIndex = state.value.findIndex(
+        (item) => item.id === action.payload
+      );
+      state.value[itemIndex].quantity -= 1;
+    },
   },
 });
-export const { addToCart, removeFromCart,incrementQuantity ,decrementQuantity} = cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  incrementQuantity,
+  decrementQuantity,
+} = cartSlice.actions;
 export default cartSlice.reducer;
