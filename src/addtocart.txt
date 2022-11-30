@@ -1,0 +1,10 @@
+let products: ProductInterface[];
+     if (state.value.length === 0) {
+       products = [action.payload];
+     } else {
+       products = [...state.value, action.payload];
+       }
+       return {
+        ...state,
+         value: products,
+      };

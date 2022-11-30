@@ -1,11 +1,13 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../app/store";
-import { removeFromCart } from "../features/cart/cartSlice";
+import Total from "../components/Total";
+import { removeFromCart, incrementQuantity,decrementQuantity} from "../features/cart/cartSlice";
 export const Cart = () => {
   const cart = useSelector((state: RootState) => state.cart.value);
   const dispatch = useDispatch();
   return (
+    <>
     <div className="grid  md:grid-cols-3  sm:grid-cols-1 p-20  gap-10">
       {cart &&
         cart.map((item) => {
@@ -25,11 +27,11 @@ export const Cart = () => {
               </div>
 
               <div>
-                <button className="font-bold bg-slate-500 p-2 m-2 rounded-full">
+                <button   onClick={()=>dispatch(decrementQuantity(item.id))}  className="font-bold bg-slate-500 p-2 m-2 rounded-full">
                   -
                 </button>
-                <span className="font-bold text-xl">Quantity :</span>
-                <button className="font-bold bg-slate-500 p-2 m-2 rounded-full">
+                <span className="font-bold text-xl">Quantity : {item.quantity}</span>
+                <button onClick={()=>dispatch(incrementQuantity(item.id))} className="font-bold bg-slate-500 p-2 m-2 rounded-full">
                   +
                 </button>
               </div>
@@ -40,8 +42,11 @@ export const Cart = () => {
                 Remove from cart
               </button>
             </div>
+            
           );
         })}
     </div>
+    <Total/>
+    </>
   );
 };
