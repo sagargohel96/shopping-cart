@@ -9,7 +9,6 @@ export const Cart = () => {
     <div className="grid  md:grid-cols-3  sm:grid-cols-1 p-20  gap-10">
       {cart &&
         cart.map((item) => {
-          // const imgurl = item.imgurl[0];
           return (
             <div
               className="max-w-sm rounded overflow-hidden shadow-lg max-h-100"

@@ -14,6 +14,15 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
+      const itemInCart = state.value.find(
+        (item) => item.id === action.payload.id
+      );
+      if (itemInCart) {
+        state.quantity = state.quanity
+          uan;
+      } else {
+        state.cart.push({ ...action.payload, quantity: 1 });
+      }
       let products: ProductInterface[];
       if (state.value.length === 0) {
         products = [action.payload];
