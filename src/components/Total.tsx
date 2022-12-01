@@ -11,9 +11,9 @@ const Total = () => {
     totalPrice += item.price * item.quantity;
   });
   return (
-    <div className='p-10 flex justify-around sticky top-1 bg-slate-400 '>
-      <div className='text-4xl mb-2'>Total quantity: {totalQuantity}</div>
-      <div className='text-4xl'>Total price: $ {totalPrice}</div>
+    <div className='p-10 flex  justify-between fixed bottom-0 bg-slate-200 border-solid border-1 border-gray-600 '>
+      <div className='flex text-2xl mb-2'>Total quantity : {totalQuantity}</div>
+      <div className='flex ml-10 text-2xl'>Total price: $ {totalPrice}</div>
     </div>
   );
 };
