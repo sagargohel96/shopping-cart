@@ -3,7 +3,10 @@ import { ProductInterface } from '../interface/ProductInferface';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../features/cart/cartSlice';
 import { useState } from 'react';
-import { clsx } from 'clsx';
+import { FaCartPlus } from 'react-icons/fa';
+import { BsFillCartCheckFill } from 'react-icons/bs';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 type CardObj = {
   product: ProductInterface;
   imgurl: string;
@@ -15,40 +18,41 @@ type CardProps = {
   cardDetails: CardObj;
 };
 export const Card = (props: CardProps) => {
-  const { imgurl, title, price, rating, product } = props.cardDetails;
+  const { imgurl, title, price, product } = props.cardDetails;
   const dispatch = useDispatch();
-  const [active, setActive] = useState(false);
-
+  const [active, setActive] = useState(true);
   const handleAddToCart = () => {
     dispatch(addToCart(product));
     setActive((pre) => !pre);
+    toast('Item added to cart!');
+    setActive(false);
   };
-
   return (
     <div className='flex flex-col max-w-sm rounded overflow-hidden shadow h-4/3 p-4 hover:shadow-lg'>
       <div className='flex justify-center'>
         <img className='h-60 rounded' src={imgurl} alt={title} />
       </div>
-      <div className='flex flex-col justify-between '>
-        <div className='px-6 py-4'>
-          <div className='font-bold text-xl '>Title : {title}</div>
+      <div className=' flex justify-between mt-2 '>
+        <div className='mb-2'>
+          <div className='font-bold text-xl text-start'> {title}</div>
+          <div className='text-start justify-around text-gray-500 font-semibold '>
+            $ {price}
+          </div>
         </div>
-        <div className=' flex justify-around px-6 pt-4 pb-2'>
-          <span className='font-bold text-xl'>Price :₹ {price}</span>
-          <span className='font-semibold text-slate-500'>
-            Rating : {rating}
-          </span>
-        </div>
-        <div className='flex justify-center'>
-          <button
-            onClick={handleAddToCart}
-            className={clsx(
-              'bg-blue-500  text-white font-bold p-2 px-4 m-4  rounded-full',
-              [{ 'bg-red-700': active }]
-            )}
-          >
-            Add to cart
-          </button>
+        <div className='flex items-center '>
+          {active ? (
+            <FaCartPlus
+              className='text-3xl mr-2 cursor-pointer'
+              onClick={handleAddToCart}
+            />
+          ) : (
+            <BsFillCartCheckFill
+              onClick={() => {
+                toast('Your item has been added');
+              }}
+              className='text-3xl mr-2 cursor-pointer'
+            />
+          )}
         </div>
       </div>
     </div>

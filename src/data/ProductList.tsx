@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect, useCallback, Fragment } from 'react';
 import { Card } from '../components/Card';
-import Loader from '../components/Loader';
 
 import { ProductInterface } from '../interface/ProductInferface';
 
@@ -74,10 +73,10 @@ const ProductList = () => {
           return (
             <div key={index}>
               <div
-                className='bg-indigo-900 text-center py-4 lg:px-4'
+                className='bg-gradient-to-r from-slate-600  text-center py-4 mx-14 lg:px-4'
                 role='alert'
               >
-                <span className=' rounded-full bg-indigo-500 uppercase px-4 py-3 text-lg font-bold text-white mr-3 '>
+                <span className=' uppercase px-4 py-3 text-lg font-bold text-white mr-3 '>
                   {product[0]?.category.toLocaleUpperCase()}
                 </span>
               </div>

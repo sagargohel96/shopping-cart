@@ -49,6 +49,16 @@ export const cartSlice = createSlice({
       const itemIndex = state.value.findIndex(
         (item) => item.id === action.payload
       );
+      if (state.value[itemIndex].quantity === 1) {
+        confirm('are want to delete this item?');
+        const products = state.value.filter(
+          (item) => item.id !== action.payload
+        );
+        return {
+          ...state,
+          value: products,
+        };
+      }
       state.value[itemIndex].quantity -= 1;
     },
   },
