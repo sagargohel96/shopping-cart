@@ -10,7 +10,7 @@ export const Cart = () => {
       <Total />
       <div className=' px-20 gap-10 '>
         <div
-          className='flex justify-between bg-gradient-to-r from-slate-800  text-center py-4 mb-4 sticky top-16 lg:px-4'
+          className='flex justify-between bg-slate-800  text-center py-4 mb-4 sticky top-16 lg:px-4'
           role='alert'
         >
           <div className='uppercase px-4 py-3 text-lg font-bold text-white ml-20 flex '>

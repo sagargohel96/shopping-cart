@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Cart } from '../tools/svgs';
 import { AiFillStar } from 'react-icons/ai';
 
 interface Rating {

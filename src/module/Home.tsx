@@ -1,9 +1,13 @@
-import React from "react";
-import ProductList from "../data/ProductList";
+import React from 'react';
+// import BottomNavbar from '../components/BottomNavbar';
+import ProductList from '../data/ProductList';
 export const Home = () => {
   return (
-    <div>
-      <ProductList />
-    </div>
+    <>
+      <div>
+        <ProductList />
+      </div>
+      {/* <BottomNavbar /> */}
+    </>
   );
 };

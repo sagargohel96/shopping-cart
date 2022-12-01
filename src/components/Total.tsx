@@ -1,13 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../app/store';
+import { toast } from 'react-toastify';
 import { GrCheckboxSelected } from 'react-icons/gr';
 import { Link } from 'react-router-dom';
 const Total = () => {
   const cart = useSelector((state: RootState) => state.cart.value);
   let totalQuantity = 0;
   let totalPrice = 0;
-
   cart.forEach((item) => {
     totalQuantity += item.quantity;
     totalPrice += item.price * item.quantity;
@@ -21,12 +21,24 @@ const Total = () => {
         <span className='font-bold'>Total price : </span> ${totalPrice}
       </div>
       <div className='flex  ml-10 '>
-        <Link to='/confirmpage'>
-          <button className='bg-green-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center'>
+        {cart.length ? (
+          <Link to='/confirmpage'>
+            <button className='bg-green-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center'>
+              <GrCheckboxSelected className='mr-2' />
+              <span>Confirm Order</span>
+            </button>
+          </Link>
+        ) : (
+          <button
+            onClick={() => {
+              toast('Sorry , Your cart is empty !');
+            }}
+            className='bg-green-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center'
+          >
             <GrCheckboxSelected className='mr-2' />
             <span>Confirm Order</span>
           </button>
-        </Link>
+        )}
       </div>
     </div>
   );

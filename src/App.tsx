@@ -3,13 +3,20 @@ import Navbar from './components/Navbar';
 import './index.css';
 import Routing from './routing/Routing';
 import { ToastContainer } from 'react-toastify';
+// import BottomNavbar from './components/BottomNavbar';
 
 function App() {
   return (
     <div className='container '>
       <Navbar />
       <Routing />
-      <ToastContainer autoClose={1000} theme='dark' hideProgressBar={true} />
+      <ToastContainer
+        autoClose={1000}
+        theme='dark'
+        hideProgressBar={true}
+        position='bottom-right'
+      />
+      {/* <BottomNavbar /> */}
     </div>
   );
 }
