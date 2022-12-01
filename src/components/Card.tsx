@@ -7,6 +7,7 @@ import { FaCartPlus } from 'react-icons/fa';
 import { BsFillCartCheckFill } from 'react-icons/bs';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Rating } from './Rating';
 type CardObj = {
   product: ProductInterface;
   imgurl: string;
@@ -18,7 +19,7 @@ type CardProps = {
   cardDetails: CardObj;
 };
 export const Card = (props: CardProps) => {
-  const { imgurl, title, price, product } = props.cardDetails;
+  const { imgurl, title, price, product, rating } = props.cardDetails;
   const dispatch = useDispatch();
   const [active, setActive] = useState(true);
   const handleAddToCart = () => {
@@ -37,6 +38,7 @@ export const Card = (props: CardProps) => {
           <div className='font-bold text-xl text-start'> {title}</div>
           <div className='text-start justify-around text-gray-500 font-semibold '>
             $ {price}
+            <Rating rating={rating} />
           </div>
         </div>
         <div className='flex items-center '>
