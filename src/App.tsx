@@ -3,7 +3,6 @@ import Navbar from './components/Navbar';
 import './index.css';
 import Routing from './routing/Routing';
 import { ToastContainer } from 'react-toastify';
-// import BottomNavbar from './components/BottomNavbar';
 
 function App() {
   return (
@@ -16,7 +15,6 @@ function App() {
         hideProgressBar={true}
         position='bottom-right'
       />
-      {/* <BottomNavbar /> */}
     </div>
   );
 }
